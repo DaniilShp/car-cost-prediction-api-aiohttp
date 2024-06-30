@@ -1,0 +1,1 @@
+SELECT car_id FROM $table;

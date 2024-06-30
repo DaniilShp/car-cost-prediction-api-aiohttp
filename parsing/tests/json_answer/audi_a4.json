@@ -1,0 +1,222 @@
+[
+  {
+    "car_id": 515400244,
+    "href": "https://auto.drom.ru/krasnodar/audi/a4/515400244.html",
+    "brand_model": "Audi A4",
+    "production_year": 2004,
+    "price": 450000,
+    "volume": 2.0,
+    "power": 200,
+    "gearbox_type": "\u0432\u0430\u0440\u0438\u0430\u0442\u043e\u0440",
+    "mileage": 313000
+  },
+  {
+    "car_id": 525623110,
+    "href": "https://auto.drom.ru/moscow/audi/a4/525623110.html",
+    "brand_model": "Audi A4",
+    "production_year": 2008,
+    "price": 770000,
+    "volume": 1.8,
+    "power": 160,
+    "gearbox_type": "\u0432\u0430\u0440\u0438\u0430\u0442\u043e\u0440",
+    "mileage": 245000
+  },
+  {
+    "car_id": 318290029,
+    "href": "https://auto.drom.ru/vladivostok/audi/a4/318290029.html",
+    "brand_model": "Audi A4",
+    "production_year": 2013,
+    "price": 1760000,
+    "volume": 2.0,
+    "power": 211,
+    "gearbox_type": "\u0440\u043e\u0431\u043e\u0442",
+    "mileage": 233000
+  },
+  {
+    "car_id": 216777950,
+    "href": "https://auto.drom.ru/chelyabinsk/audi/a4/216777950.html",
+    "brand_model": "Audi A4",
+    "production_year": 2015,
+    "price": 2199000,
+    "volume": 1.8,
+    "power": 170,
+    "gearbox_type": "\u0432\u0430\u0440\u0438\u0430\u0442\u043e\u0440",
+    "mileage": 70094
+  },
+  {
+    "car_id": 690894586,
+    "href": "https://auto.drom.ru/naberezhnye-chelny/audi/a4/690894586.html",
+    "brand_model": "Audi A4",
+    "production_year": 2009,
+    "price": 1070000,
+    "volume": 2.0,
+    "power": 143,
+    "gearbox_type": "\u0432\u0430\u0440\u0438\u0430\u0442\u043e\u0440",
+    "mileage": 279000
+  },
+  {
+    "car_id": 142452728,
+    "href": "https://auto.drom.ru/ekaterinburg/audi/a4/142452728.html",
+    "brand_model": "Audi A4",
+    "production_year": 2019,
+    "price": 2670000,
+    "volume": 1.4,
+    "power": 150,
+    "gearbox_type": "\u0440\u043e\u0431\u043e\u0442",
+    "mileage": 46920
+  },
+  {
+    "car_id": 926879096,
+    "href": "https://auto.drom.ru/krasnoyarsk/audi/a4/926879096.html",
+    "brand_model": "Audi A4",
+    "production_year": 2019,
+    "price": 3470000,
+    "volume": 2.0,
+    "power": 249,
+    "gearbox_type": "\u0440\u043e\u0431\u043e\u0442",
+    "mileage": 85000
+  },
+  {
+    "car_id": 357199765,
+    "href": "https://auto.drom.ru/pereslavl-zalesskiy/audi/a4/357199765.html",
+    "brand_model": "Audi A4",
+    "production_year": 2002,
+    "price": 500000,
+    "volume": 2.0,
+    "power": 130,
+    "gearbox_type": "\u043c\u0435\u0445\u0430\u043d\u0438\u043a\u0430",
+    "mileage": 468000
+  },
+  {
+    "car_id": 528584861,
+    "href": "https://auto.drom.ru/moscow/audi/a4/528584861.html",
+    "brand_model": "Audi A4",
+    "production_year": 2008,
+    "price": 1250000,
+    "volume": 2.0,
+    "power": 211,
+    "gearbox_type": "\u0440\u043e\u0431\u043e\u0442",
+    "mileage": 270000
+  },
+  {
+    "car_id": 772269843,
+    "href": "https://auto.drom.ru/krasnoyarsk/audi/a4/772269843.html",
+    "brand_model": "Audi A4",
+    "production_year": 2002,
+    "price": 550000,
+    "volume": 3.0,
+    "power": 220,
+    "gearbox_type": "\u0410\u041a\u041f\u041f",
+    "mileage": 392000
+  },
+  {
+    "car_id": 716932938,
+    "href": "https://auto.drom.ru/tyumen/audi/a4/716932938.html",
+    "brand_model": "Audi A4",
+    "production_year": 2005,
+    "price": 729000,
+    "volume": 2.0,
+    "power": 130,
+    "gearbox_type": "\u0432\u0430\u0440\u0438\u0430\u0442\u043e\u0440",
+    "mileage": 233652
+  },
+  {
+    "car_id": 391154975,
+    "href": "https://auto.drom.ru/maslyanino/audi/a4/391154975.html",
+    "brand_model": "Audi A4",
+    "production_year": 2006,
+    "price": 600000,
+    "volume": 2.0,
+    "power": 130,
+    "gearbox_type": "\u0432\u0430\u0440\u0438\u0430\u0442\u043e\u0440",
+    "mileage": 259191
+  },
+  {
+    "car_id": 820123364,
+    "href": "https://auto.drom.ru/irkutsk/audi/a4/820123364.html",
+    "brand_model": "Audi A4",
+    "production_year": 2002,
+    "price": 330000,
+    "volume": 1.8,
+    "power": 170,
+    "gearbox_type": "\u0410\u041a\u041f\u041f",
+    "mileage": 220000
+  },
+  {
+    "car_id": 604732353,
+    "href": "https://auto.drom.ru/pleshanovo/audi/a4/604732353.html",
+    "brand_model": "Audi A4",
+    "production_year": 1997,
+    "price": 350000,
+    "volume": 1.9,
+    "power": 110,
+    "gearbox_type": "\u043c\u0435\u0445\u0430\u043d\u0438\u043a\u0430",
+    "mileage": 414717
+  },
+  {
+    "car_id": 360578786,
+    "href": "https://auto.drom.ru/mezhdurechensk/audi/a4/360578786.html",
+    "brand_model": "Audi A4",
+    "production_year": 1995,
+    "price": 265000,
+    "volume": 1.8,
+    "power": 125,
+    "gearbox_type": "\u043c\u0435\u0445\u0430\u043d\u0438\u043a\u0430",
+    "mileage": 200000
+  },
+  {
+    "car_id": 565434816,
+    "href": "https://auto.drom.ru/barnaul/audi/a4/565434816.html",
+    "brand_model": "Audi A4",
+    "production_year": 2012,
+    "price": 2130000,
+    "volume": 2.0,
+    "power": 211,
+    "gearbox_type": "\u0440\u043e\u0431\u043e\u0442",
+    "mileage": 82416
+  },
+  {
+    "car_id": 797642188,
+    "href": "https://auto.drom.ru/irkutsk/audi/a4/797642188.html",
+    "brand_model": "Audi A4",
+    "production_year": 2010,
+    "price": 1300000,
+    "volume": 1.8,
+    "power": 160,
+    "gearbox_type": "\u0432\u0430\u0440\u0438\u0430\u0442\u043e\u0440",
+    "mileage": 160000
+  },
+  {
+    "car_id": 51749426,
+    "href": "https://auto.drom.ru/homutovo-irk/audi/a4/51749426.html",
+    "brand_model": "Audi A4",
+    "production_year": 2010,
+    "price": 910000,
+    "volume": 1.8,
+    "power": 160,
+    "gearbox_type": "\u0432\u0430\u0440\u0438\u0430\u0442\u043e\u0440",
+    "mileage": 100000
+  },
+  {
+    "car_id": 309888658,
+    "href": "https://auto.drom.ru/novokuznetsk/audi/a4/309888658.html",
+    "brand_model": "Audi A4",
+    "production_year": 2012,
+    "price": 1549000,
+    "volume": 1.8,
+    "power": 170,
+    "gearbox_type": "\u0432\u0430\u0440\u0438\u0430\u0442\u043e\u0440",
+    "mileage": 167000
+  },
+  {
+    "car_id": 147597796,
+    "href": "https://auto.drom.ru/kemerovo/audi/a4/147597796.html",
+    "brand_model": "Audi A4",
+    "production_year": 2021,
+    "price": 4079000,
+    "volume": 2.0,
+    "power": 150,
+    "gearbox_type": "\u0440\u043e\u0431\u043e\u0442",
+    "mileage": 64000
+  }
+]

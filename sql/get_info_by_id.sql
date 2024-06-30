@@ -1,0 +1,1 @@
+select * from $table where car_id = $car_id

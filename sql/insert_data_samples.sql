@@ -1,0 +1,1 @@
+insert into $table (car_id, href, brand_model, production_year, price, volume, power, gearbox_type, mileage) values($car_id, '$href', '$brand_model', $production_year, $price, $volume, $power, '$gearbox_type', $mileage)
