@@ -32,7 +32,7 @@ class BaseDromParser(metaclass=abc.ABCMeta):
         self.debug_mode = on
 
     def _get_car_ids(self):
-        self.car_hrefs = [el.get("href") for el in self.soup.find_all("a", class_="css-4zflqt e1huvdhj1")]
+        self.car_hrefs = [el.get("href") for el in self.soup.find_all("a", class_="g6gv8w4 g6gv8w8 _1ioeqy90")]
         if len(self.car_hrefs) != 0:
             print(self.car_hrefs) if self.debug_mode else ...
         else:
@@ -43,7 +43,7 @@ class BaseDromParser(metaclass=abc.ABCMeta):
         return 0
 
     def _get_car_names_and_years(self):
-        self.car_names_and_years = [el.text for el in self.soup.find_all("div", class_="css-16kqa8y e3f4v4l2")]
+        self.car_names_and_years = [el.text for el in self.soup.find_all("h3", class_="css-16kqa8y efwtv890")]
         if len(self.car_names_and_years) != 0:
             print(self.car_names_and_years) if self.debug_mode else ...
             return 0

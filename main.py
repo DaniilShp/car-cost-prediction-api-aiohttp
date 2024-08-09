@@ -16,7 +16,7 @@ from db.async_orm_db import mysql_context
 
 middlewares_list = [
     error_middleware(),
-    timeout_middleware(3),
+    timeout_middleware(30),
     directory_cleanup_middleware(static_dir, 10, 10)
 ]
 
