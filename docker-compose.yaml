@@ -1,8 +1,10 @@
 version: '3.8'
+
 services:
   mysql-database:
     image: mysql:latest
     container_name: mysql-db
+    restart: unless-stopped
     ports:
       - 3307:3306
     environment:
@@ -10,3 +12,12 @@ services:
       - MYSQL_USER=prediction
       - MYSQL_PASSWORD=prediction
       - MYSQL_DATABASE=prediction
+
+  web:
+    build: .
+    command: python main.py
+    container_name: app
+    restart: unless-stopped
+    network_mode: "host"
+    depends_on:
+      - mysql-database
