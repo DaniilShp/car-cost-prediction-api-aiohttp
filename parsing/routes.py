@@ -18,7 +18,7 @@ async def index(request):
 @parsing_routes.post('/parse_page/{num:\d+}')
 async def add_data_in_db(request):
     page_num = request.match_info['num']
-    parse_config = await request.post()
+    parse_config = await request.json()
     result = await parse_page(request.config_dict['db_config'], parse_config, int(page_num))
     for line in result:
         try:
@@ -32,7 +32,7 @@ async def add_data_in_db(request):
 async def add_multidata_in_db(request):
     page_start = request.match_info['num_start']
     page_end = request.match_info['num_end']
-    parse_config = await request.post()
+    parse_config = await request.json()
     all_results = []
     for page_num in range(int(page_start), int(page_end) + 1):
         result = await parse_page(request.config_dict['db_config'], parse_config, page_num)
