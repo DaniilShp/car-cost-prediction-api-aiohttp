@@ -21,3 +21,18 @@ services:
     network_mode: "host"
     depends_on:
       - mysql-database
+
+  worker:
+    build: .
+    command: celery -A parsing.delayed_tasks:celery worker --loglevel info
+    container_name: celery
+    network_mode: "host"
+    depends_on:
+      - web
+      - redis
+
+  redis:
+    image: redis:latest
+    container_name: redis-db
+    ports:
+      - 6379:6379

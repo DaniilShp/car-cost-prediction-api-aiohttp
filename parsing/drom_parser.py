@@ -151,7 +151,6 @@ class AsyncDromParser(BaseDromParser):
             print(err)
 
 
-
 async def parse_page(db_config: dict, parse_config: dict, page: int):
     _parser = AsyncDromParser()
     await _parser.parse(
