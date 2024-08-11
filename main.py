@@ -5,7 +5,8 @@ import logging
 from aiohttp import web
 from aiohttp_swagger import *
 from aiohttp_middlewares import timeout_middleware, error_middleware
-from settings import get_db_config
+
+import settings
 import routes
 from utils import directory_cleanup_middleware
 from parsing.main import init_parsing_sub_app
@@ -22,7 +23,7 @@ middlewares_list = [
 
 
 async def init_app():
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.INFO if not settings.debug_mode else logging.DEBUG)
     parsing_sub_app = await init_parsing_sub_app()
     regression_sub_app = await init_regression_sub_app()
     db_sub_app = await init_db_sub_app()
@@ -30,7 +31,7 @@ async def init_app():
     aiohttp_debugtoolbar.setup(app)
     setup_swagger(app)
     app.add_routes(routes.routes)
-    app['db_config'] = get_db_config()
+    app['db_config'] = settings.get_db_config()
     app['cleanup_time_check'] = time.time()
     app.cleanup_ctx.append(mysql_context)
     app.add_subapp(prefix='/parsing/', subapp=parsing_sub_app)
@@ -42,7 +43,9 @@ async def init_app():
 def main():
     loop = asyncio.get_event_loop()
     app = loop.run_until_complete(init_app())
-    web.run_app(app, host='127.0.0.1', port=8081, access_log_format='%a %t "%r" %s %Tfs.')
+    host, port = settings.listen.split(':')
+    port = int(port)
+    web.run_app(app, host=host, port=port, access_log_format='%a %t "%r" %s %Tfs.')
 
 
 if __name__ == '__main__':

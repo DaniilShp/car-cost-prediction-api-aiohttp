@@ -1,11 +1,12 @@
 from celery import Celery
 from sqlalchemy.exc import IntegrityError
+
+import settings
 from db.sync_orm_db import create_pymysql_engine, insert_data
 from parsing.drom_parser import SyncDromParser
-from settings import get_db_config
 
-db_config = get_db_config()
-celery: Celery = Celery('hello', broker="redis://localhost:6379/0")
+db_config = settings.get_db_config()
+celery: Celery = Celery('hello', broker=settings.redis_dsn)
 engine = create_pymysql_engine(db_config)
 
 
@@ -29,5 +30,3 @@ def parse_and_add_data(parse_config: dict, page: int):
             insert_data(parse_config['db_table'], engine, line)
         except IntegrityError as exc:
             print(exc)
-
-

@@ -18,6 +18,7 @@ services:
     command: python main.py
     container_name: app
     restart: unless-stopped
+    env_file: .env
     network_mode: "host"
     depends_on:
       - mysql-database
@@ -26,6 +27,7 @@ services:
     build: .
     command: celery -A parsing.delayed_tasks:celery worker --loglevel info
     container_name: celery
+    env_file: .env
     network_mode: "host"
     depends_on:
       - web

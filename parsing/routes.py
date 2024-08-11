@@ -1,8 +1,6 @@
 from aiohttp import web
-from parsing.drom_parser import parse_page
-from db.async_orm_db import insert_data
-from pymysql.err import IntegrityError
 from parsing.delayed_tasks import parse_and_add_data
+
 parsing_routes = web.RouteTableDef()
 
 

@@ -1,16 +1,21 @@
 import os
-import json
+import dotenv
 
 
-def get_config():
-    return {'app_host': '127.0.0.1', 'app_port': 8081}
+dotenv.load_dotenv(dotenv_path=".env")
+
+listen = os.environ.get('LISTEN')
+debug_mode = os.environ.get('DEBUG_MODE')
+redis_dsn = os.environ.get('REDIS_DSN')
 
 
 def get_db_config():
-    current_file = os.path.abspath(__file__)
-    current_dir = os.path.dirname(current_file)
-    dbconfig_path = os.path.join(current_dir, 'configs', 'dbconfig.json')
-    with open(dbconfig_path, 'r') as f:
-        dbconfig = json.load(f)
+    dbconfig = {
+        'host': os.environ.get('MYSQl_HOST'),
+        'user': os.environ.get('MYSQL_USER'),
+        'password': os.environ.get('MYSQL_PASSWORD'),
+        'database': os.environ.get('MYSQL_DATABASE')
+    }
     return dbconfig
+
 

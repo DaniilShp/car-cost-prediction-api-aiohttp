@@ -149,14 +149,3 @@ class AsyncDromParser(BaseDromParser):
             if err.value != 503:
                 raise err
             print(err)
-
-
-async def parse_page(db_config: dict, parse_config: dict, page: int):
-    _parser = AsyncDromParser()
-    await _parser.parse(
-        f"{parse_config['home_url']}/{parse_config['car_brand']}/page{page}/{parse_config['settings_url']}"
-    )
-    print(page)
-    if _parser.resulting_dicts is None:
-        return None
-    return _parser.resulting_dicts
