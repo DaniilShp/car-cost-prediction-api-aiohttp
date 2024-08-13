@@ -12,6 +12,7 @@ from utils import directory_cleanup_middleware
 from parsing.main import init_parsing_sub_app
 from regression.main import init_regression_sub_app, static_dir
 from db.main import init_db_sub_app
+from auth.main import init_auth_sub_app
 from db.async_orm_db import mysql_context
 
 
@@ -27,6 +28,7 @@ async def init_app():
     parsing_sub_app = await init_parsing_sub_app()
     regression_sub_app = await init_regression_sub_app()
     db_sub_app = await init_db_sub_app()
+    auth_sub_app = await init_auth_sub_app()
     app = web.Application(middlewares=middlewares_list)
     aiohttp_debugtoolbar.setup(app)
     setup_swagger(app)
@@ -37,6 +39,7 @@ async def init_app():
     app.add_subapp(prefix='/parsing/', subapp=parsing_sub_app)
     app.add_subapp(prefix='/regression/', subapp=regression_sub_app)
     app.add_subapp(prefix='/db/', subapp=db_sub_app)
+    app.add_subapp(prefix='/auth/', subapp=auth_sub_app)
     return app
 
 
