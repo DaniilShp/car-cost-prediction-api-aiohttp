@@ -4,6 +4,8 @@ from typing import Union
 from aiohttp import web
 from aiohttp_middlewares.annotations import Handler, Urls, Middleware
 from aiohttp_middlewares.utils import match_request
+
+from auth.utils import login_required
 from db.sql_to_csv import load_dataframe_in_request
 from regression.linear_regression_model import linear_regression_create
 from regression.polynomial_regression_model import polynomial_regression_create, predict as polynomial_predict
@@ -58,6 +60,7 @@ async def info(request):
 
 
 @regression_routes.get('/static/{path}')
+@login_required
 async def get_static_image(request):
     path = request.match_info['path']
     static_dir = request.app['static_dir']
@@ -65,6 +68,7 @@ async def get_static_image(request):
 
 
 @regression_routes.get('/download/{path}')
+@login_required
 async def download_image(request):
     path = request.match_info['path']
     static_dir = request.app['static_dir']
@@ -72,6 +76,7 @@ async def download_image(request):
 
 
 @regression_routes.get('/linear/create_for_table_{name}')
+@login_required
 async def create_linear_regression(request):
     x, y = request['x'], request['y']
     static_dir = request.app['static_dir']
@@ -83,6 +88,7 @@ async def create_linear_regression(request):
 
 
 @regression_routes.post('/linear/predict')
+@login_required
 async def predict_price_linear_model(request):
     data = await request.json()
     try:
@@ -94,6 +100,7 @@ async def predict_price_linear_model(request):
 
 
 @regression_routes.get('/polynomial/create_for_table_{name}')
+@login_required
 async def create_polynomial_regression(request):
     x, y = request['x'], request['y']
     static_dir = request.app['static_dir']
@@ -106,6 +113,7 @@ async def create_polynomial_regression(request):
 
 
 @regression_routes.post('/polynomial/predict')
+@login_required
 async def predict_price_polynomial_model(request):
     data = await request.json()
     try:

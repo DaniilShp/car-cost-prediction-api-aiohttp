@@ -3,6 +3,8 @@ import sqlalchemy
 from aiohttp import web
 from pathlib import Path
 from decimal import Decimal
+
+from auth.utils import login_required
 from utils import remove_file, write_by_chunks
 from db.async_orm_db import (
     create_table_if_not_exists, drop_table_if_exists,
@@ -33,6 +35,7 @@ async def index(request):
 
 
 @db_routes.get('/get_all_car_ids/{db_table}')
+@login_required
 async def show_ids(request):
     name = request.match_info['db_table']
     engine = request.config_dict['alchemy_engine']
@@ -46,6 +49,7 @@ async def show_ids(request):
 
 
 @db_routes.get('/get_info_by_id/{db_table}/{car_id:\d+}')
+@login_required
 async def show_info_by_id(request):
     name = request.match_info['db_table']
     car_id = int(request.match_info['car_id'])
@@ -62,6 +66,7 @@ async def show_info_by_id(request):
 
 
 @db_routes.post('/create_table_{name}')
+@login_required
 async def create_table(request):
     name = request.match_info['name']
     engine = request.config_dict['alchemy_engine']
@@ -72,6 +77,7 @@ async def create_table(request):
 
 
 @db_routes.delete('/delete_table_{name}')
+@login_required
 async def delete_table(request):
     name = request.match_info['name']
     engine = request.config_dict['alchemy_engine']
@@ -80,6 +86,7 @@ async def delete_table(request):
 
 
 @db_routes.put('/insert_line_in_table_{name}')
+@login_required
 async def insert_line(request: web.Request):
     name = request.match_info['name']
     engine = request.config_dict['alchemy_engine']
@@ -89,6 +96,7 @@ async def insert_line(request: web.Request):
 
 
 @db_routes.post('/from_csv_create_table_{name}')
+@login_required
 async def create_table_by_csv_file(request: web.Request):
     name = request.match_info['name']
     engine = request.config_dict['alchemy_engine']

@@ -1,5 +1,8 @@
 from aiohttp import web
+
+from auth.utils import login_required
 from parsing.delayed_tasks import parse_and_add_data
+
 
 parsing_routes = web.RouteTableDef()
 
@@ -14,6 +17,7 @@ async def index(request):
 
 
 @parsing_routes.post('/parse_page/{num:\d+}')
+@login_required
 async def add_data_in_db(request):
     page_num = request.match_info['num']
     parse_config = await request.json()
@@ -22,6 +26,7 @@ async def add_data_in_db(request):
 
 
 @parsing_routes.post('/parse_page/{num_start:\d+}-{num_end:\d+}')
+@login_required
 async def add_multidata_in_db(request):
     page_start = request.match_info['num_start']
     page_end = request.match_info['num_end']

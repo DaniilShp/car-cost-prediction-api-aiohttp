@@ -23,14 +23,14 @@ async def register(request: web.Request):
     return web.json_response({'message': 'registered'})
 
 
-@auth_routes.get('/login')
+@auth_routes.post('/login')
 async def login(request: web.Request):
     engine = request.config_dict['alchemy_engine']
-    session = await new_session(request)
+    session = await get_session(request)
     user_data = await request.json()
     l, p = user_data['login'], user_data['password']
     privileges = await check_password(engine, l, p)
-    if not privileges:
+    if privileges is None:
         return web.json_response({"message": "incorrect login or password"})
     payload = {'login': l, 'password': p, 'privileges': privileges}
     session['user_data'] = payload
@@ -41,6 +41,5 @@ async def login(request: web.Request):
 @login_required
 async def logout(request: web.Request):
     session = await get_session(request)
-    who_logout = str(session['user_data']['login'])
-    session['user_data'] = None
+    session.clear()
     return web.json_response({'message': 'logout'})

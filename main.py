@@ -2,12 +2,16 @@ import asyncio
 import time
 import aiohttp_debugtoolbar
 import logging
+import base64
 from aiohttp import web
 from aiohttp_swagger import *
 from aiohttp_middlewares import timeout_middleware, error_middleware
+from cryptography import fernet
+from aiohttp_session import setup
+from aiohttp_session.cookie_storage import EncryptedCookieStorage
 
-import settings
 import routes
+import settings
 from utils import directory_cleanup_middleware
 from parsing.main import init_parsing_sub_app
 from regression.main import init_regression_sub_app, static_dir
@@ -32,6 +36,9 @@ async def init_app():
     app = web.Application(middlewares=middlewares_list)
     aiohttp_debugtoolbar.setup(app)
     setup_swagger(app)
+    fernet_key = fernet.Fernet.generate_key()
+    secret_key = base64.urlsafe_b64decode(fernet_key)
+    setup(app, EncryptedCookieStorage(secret_key))
     app.add_routes(routes.routes)
     app['db_config'] = settings.get_db_config()
     app['cleanup_time_check'] = time.time()
