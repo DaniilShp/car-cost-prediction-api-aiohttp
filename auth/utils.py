@@ -18,7 +18,8 @@ def login_required(handler_func: _Handler) -> _Handler | web.json_response:
         if session.empty:
             return web.json_response({'msg': 'not authorized'})
         engine = request.config_dict['alchemy_engine']
-        if not check_password(engine, session['user_data']['login'], session['user_data']['password']):
+        ok = await check_password(engine, session['user_data']['login'], session['user_data']['password'])
+        if ok is None:
             raise web.HTTPFound('/log_out')
         return await handler_func(request, *args, **kwargs)
 

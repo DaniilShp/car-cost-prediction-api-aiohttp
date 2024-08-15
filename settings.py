@@ -6,6 +6,7 @@ dotenv.load_dotenv(dotenv_path=".env")
 
 listen = os.environ.get('LISTEN')
 debug_mode = os.environ.get('DEBUG_MODE')
+log_level = os.environ.get('LOG_LEVEL')
 redis_dsn = os.environ.get('REDIS_DSN')
 
 
