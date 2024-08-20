@@ -1,6 +1,6 @@
 import os
 import dotenv
-
+import structlog
 
 dotenv.load_dotenv(dotenv_path=".env")
 
@@ -20,3 +20,5 @@ def get_db_config():
     return dbconfig
 
 
+logger = structlog.get_logger()
+logger.debug("load settings")

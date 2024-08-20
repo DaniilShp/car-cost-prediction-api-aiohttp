@@ -1,5 +1,6 @@
 import aiomysql.sa
 import sqlalchemy.ext.asyncio
+import structlog
 from sqlalchemy import MetaData, Table, Column, Integer, String, Numeric, inspect, text
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from functools import lru_cache
@@ -31,6 +32,8 @@ async def create_table_if_not_exists(table_name: str, engine: sqlalchemy.ext.asy
         return True  # table existed
     async with engine.begin() as conn:
         await conn.run_sync(metadata.create_all)
+    logger = structlog.get_logger()
+    logger.info("Table created", table_name=table_name)
     return False
 
 
@@ -44,6 +47,8 @@ async def drop_table_if_exists(table_name: str, engine: sqlalchemy.ext.asyncio.A
     _, tbl = get_table_structure(table_name)
     async with engine.begin() as conn:
         await conn.run_sync(tbl.drop)
+    logger = structlog.get_logger()
+    logger.info("Table dropped", table_name=table_name)
 
 
 async def create_aiomysql_engine(db_config: dict):
@@ -62,6 +67,7 @@ def create_alchemy_engine(db_config: dict):
 
 async def mysql_context(app):
     app['alchemy_engine'] = create_alchemy_engine(app['db_config'])
+    app["logger"].debug("Created async alchemy+aiomysql engine")
     # async_engine = await create_aiomysql_engine(app['db_config'])
     # app['aiomysql_engine'] = async_engine
 

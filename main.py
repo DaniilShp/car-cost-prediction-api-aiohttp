@@ -1,7 +1,6 @@
 import asyncio
 import time
 import aiohttp_debugtoolbar
-import logging
 import base64
 
 import structlog
@@ -38,11 +37,13 @@ async def init_app():
     db_sub_app = await init_db_sub_app()
     auth_sub_app = await init_auth_sub_app()
     app = web.Application(middlewares=middlewares_list)
+    app["logger"] = structlog.get_logger()
     aiohttp_debugtoolbar.setup(app)
     setup_swagger(app)
     fernet_key = fernet.Fernet.generate_key()
     secret_key = base64.urlsafe_b64decode(fernet_key)
     setup(app, EncryptedCookieStorage(secret_key))
+    app["logger"].debug("setup encrypted cookie session")
     app.add_routes(routes.routes)
     app['db_config'] = settings.get_db_config()
     app['cleanup_time_check'] = time.time()

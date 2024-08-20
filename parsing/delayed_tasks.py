@@ -1,3 +1,4 @@
+import structlog
 from celery import Celery
 from sqlalchemy.exc import IntegrityError
 
@@ -15,7 +16,6 @@ def _parse_page(parse_config: dict, page: int):
     _parser.parse(
         f"{parse_config['home_url']}/{parse_config['car_brand']}/page{page}/{parse_config['settings_url']}"
     )
-    print(page)
     if _parser.resulting_dicts is None:
         return None
     return _parser.resulting_dicts
@@ -24,7 +24,6 @@ def _parse_page(parse_config: dict, page: int):
 @celery.task()
 def parse_and_add_data(parse_config: dict, page: int):
     result = _parse_page(parse_config, page)
-    print(result)
     for line in result:
         try:
             insert_data(parse_config['db_table'], engine, line)

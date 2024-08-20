@@ -106,7 +106,6 @@ class BaseDromParser(metaclass=abc.ABCMeta):
                     self.format_data() is None
             ):
                 return None
-
             print(colorama.Fore.GREEN + "page parsed successfully" + colorama.Style.RESET_ALL)
             return self.resulting_dicts
         except IndexError:
