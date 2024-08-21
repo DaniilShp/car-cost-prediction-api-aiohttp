@@ -43,7 +43,7 @@ async def set_trace_id(request: web.Request, handler):
         logger.warn("Generated trace_id", trace_id=trace_id)
     structlog.contextvars.bind_contextvars(trace_id=trace_id)
     response = await handler(request)
-    response.headers[TRACE_ID] = trace_id
+    #response.headers[TRACE_ID] = trace_id
     return response
 
 
@@ -59,7 +59,7 @@ async def request_log(request: web.Request, handler):
         response: web.Response = await handler(request)
     except Exception as exc:
         logger.exception(exc)
-        return
+        raise
     logger.debug("Debug response", data=response.text)
     logger.info(
         "Response",

@@ -70,7 +70,7 @@ class RegressionPrediction(metaclass=ABCMeta):
         plt.ylabel('Процент ошибок')
         plt.title(f'{title}\nСтолбчатая диаграмма распределения относительных погрешностей')
         plt.savefig(barplot_path)
-
+        plt.close()
 
     @staticmethod
     def show_scatterplot_with_accuracies(scatterplot_path: Path, _accuracies: list[int, float], title: str):
@@ -80,3 +80,4 @@ class RegressionPrediction(metaclass=ABCMeta):
         plt.title(f'{title}\nраспределение относительных погрешностей')
         plt.colorbar()
         plt.savefig(scatterplot_path)
+        plt.close()

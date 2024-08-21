@@ -97,6 +97,7 @@ class BaseDromParser(metaclass=abc.ABCMeta):
         return 0
 
     def parse(self, change_url_to_parse):
+        print(f"page: {self.page}, result: ", end="")
         try:
             if (
                     self._get_car_ids() is None or

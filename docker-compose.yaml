@@ -34,7 +34,7 @@ services:
       - redis
 
   redis:
-    image: redis:latest
+    image: redis:6.2.14-alpine
     container_name: redis-db
     ports:
       - 6379:6379
